@@ -1,0 +1,16 @@
+{
+  "name": "pokedex-pokeapi",
+  "version": "1.0.0",
+  "description": "Pokédex con formulario accesible que consume la PokéAPI usando TypeScript estricto.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "node server.mjs",
+    "dev": "tsc && node server.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0"
+  }
+}

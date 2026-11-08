@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Pokédex que consulta la PokéAPI y muestra Pokémon por tipo." />
+    <title>Pokédex · PokéAPI</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="module" src="dist/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#resultados">Saltar a los resultados</a>
+
+    <header class="site-header">
+      <h1>Pokédex</h1>
+      <p>
+        Explora Pokémon por tipo con datos de la
+        <a href="https://pokeapi.co/" target="_blank" rel="noopener noreferrer">PokéAPI</a>.
+      </p>
+    </header>
+
+    <main>
+      <section aria-labelledby="titulo-formulario" class="card">
+        <h2 id="titulo-formulario">Parámetros de búsqueda</h2>
+
+        <form id="search-form" action="#" method="get">
+          <div class="field">
+            <label for="pokemon-type">Tipo de Pokémon <span class="required" aria-hidden="true">*</span></label>
+            <select id="pokemon-type" name="type" required aria-describedby="type-help">
+              <option value="" selected>Selecciona un tipo…</option>
+              <option value="normal">Normal</option>
+              <option value="fire">Fuego</option>
+              <option value="water">Agua</option>
+              <option value="electric">Eléctrico</option>
+              <option value="grass">Planta</option>
+              <option value="ice">Hielo</option>
+              <option value="fighting">Lucha</option>
+              <option value="poison">Veneno</option>
+              <option value="ground">Tierra</option>
+              <option value="flying">Volador</option>
+              <option value="psychic">Psíquico</option>
+              <option value="bug">Bicho</option>
+              <option value="rock">Roca</option>
+              <option value="ghost">Fantasma</option>
+              <option value="dragon">Dragón</option>
+              <option value="dark">Siniestro</option>
+              <option value="steel">Acero</option>
+              <option value="fairy">Hada</option>
+            </select>
+            <small id="type-help">Obligatorio.</small>
+          </div>
+
+          <div class="field">
+            <label for="limit">Cantidad a mostrar <span class="required" aria-hidden="true">*</span></label>
+            <input
+              id="limit"
+              name="limit"
+              type="number"
+              inputmode="numeric"
+              min="1"
+              max="12"
+              step="1"
+              value="6"
+              required
+              aria-describedby="limit-help"
+            />
+            <small id="limit-help">Obligatorio. Número entero entre 1 y 12.</small>
+          </div>
+
+          <div class="field">
+            <label for="name-filter">Nombre contiene</label>
+            <input
+              id="name-filter"
+              name="nameFilter"
+              type="text"
+              maxlength="20"
+              pattern="[A-Za-z0-9\-]*"
+              autocomplete="off"
+              aria-describedby="name-help"
+              placeholder="Ej. char"
+              title="Solo letras, números y guiones (máximo 20 caracteres)."
+            />
+            <small id="name-help">Opcional. Solo letras, números y guiones (máx. 20).</small>
+          </div>
+
+          <div class="field field-check">
+            <input id="simulate-error" name="simulateError" type="checkbox" />
+            <label for="simulate-error">Forzar un error de servidor (para probar el estado de error)</label>
+          </div>
+
+          <div class="actions">
+            <button id="submit-btn" type="submit">Buscar en la Pokédex</button>
+            <button id="reset-btn" type="reset" class="secondary">Limpiar</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="resultados" aria-labelledby="titulo-resultados" class="card" tabindex="-1">
+        <h2 id="titulo-resultados">Resultados</h2>
+        <div id="status" class="status" role="status" aria-live="polite" data-state="idle"></div>
+        <ul id="results" class="results" aria-label="Lista de Pokémon"></ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Tarea: Formulario y consumo de una API pública · HTML + CSS + TypeScript · Datos de PokéAPI.</p>
+    </footer>
+
+    <noscript><p class="noscript">Esta aplicación necesita JavaScript habilitado.</p></noscript>
+  </body>
+</html>
